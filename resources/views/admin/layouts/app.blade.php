@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{$title}} &mdash; {{ config('app.name', 'Laravel') }}</title>
+  <title>@if (isset($title)) {{ $title }} &mdash; @endif {{ config('app.name', 'Laravel') }}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{{ asset('admin_theme/modules/izitoast/css/iziToast.css') }}">
   @yield('css_libraries')
 
   <!-- Template CSS -->
@@ -31,12 +32,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="{{ asset('admin_theme/js/stisla.js') }}"></script>
   <!-- JS Libraies -->
+  <script src="{{ asset('admin_theme/modules/izitoast/js/iziToast.js') }}"></script>
   @yield('js_libraries')
 
   <!-- Template JS File -->
   <script src="{{ asset('admin_theme/js/scripts.js') }}"></script> 
-<script src="{{ asset('admin_theme/js/custom.js') }}"></script>
-@yield('page_script')
+  <script src="{{ asset('admin_theme/js/custom.js') }}"></script>
+  <script>
+        var baseUrl = "{{ url(app()->getLocale().'/') }}";
+  </script>
+  @yield('page_script')
   <!-- Page Specific JS File -->
+
+  @include('vendor.lara-izitoast.toast')
 </body>
 </html>

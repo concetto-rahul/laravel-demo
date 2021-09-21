@@ -44,6 +44,14 @@ Route::prefix('/{any?}/admin')->name('admin.')->group(function () {
 
         Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('profile');
         Route::post('/profile_validation', [App\Http\Controllers\Admin\ProfileController::class, 'profile_validation'])->name('profile_validation');
+        
+        Route::post('/product/table', [App\Http\Controllers\Admin\ProductController::class, 'tablejson'])->name('product.table');
+        Route::get('/product/delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
+        Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
+        // Route::get('/product/index', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product.index');
+        // Route::get('/product/edit/{id}', [App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('product.edit');
+        // Route::get('/product/show/{id}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->name('product.show');
+        // Route::delete('/product/destroy/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('product.destroy');
     });
 });
    
