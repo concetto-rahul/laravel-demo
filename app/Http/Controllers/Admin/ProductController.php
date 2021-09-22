@@ -140,7 +140,7 @@ class ProductController extends Controller
                 'added_by'=>Auth::user()->name,
                 'added_id'=>Auth::user()->id
             ];
-            Mail::to('rahul.patil@concettolabs.com')->send(new \App\Mail\ProductAddMail($details));
+            // Mail::to('rahul.patil@concettolabs.com')->send(new \App\Mail\ProductAddMail($details));
             
             Log::info('End code for add product.');
             
