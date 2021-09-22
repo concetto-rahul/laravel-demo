@@ -66,5 +66,8 @@ class Kernel extends HttpKernel
         'checkadminlogin' => \App\Http\Middleware\CheckAdminLogin::class,
         'checkuserlogin' => \App\Http\Middleware\CheckUserLogin::class,
         'setapplanglocal' => \App\Http\Middleware\SetAppLangLocal::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 }

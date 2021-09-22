@@ -8,7 +8,7 @@
             <h6>Are you sure you want to delete this product?</h6>
         </div>
         <div class="modal-footer">
-            <form method="POST" action="{{route('admin.product.destroy',['id'=>$id,'any'=>app()->getLocale()])}}" accept-charset="UTF-8">
+            <form method="POST" action="{{route('admin.product.destroy',['product'=>$id,'any'=>app()->getLocale()])}}" accept-charset="UTF-8">
                 <input name="_method" type="hidden" value="DELETE">
                 @csrf
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

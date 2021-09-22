@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageInProducts extends Migration
+class AddUserRoleColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddImageInProducts extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('imageviewfile')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('user_role')->default(1);
         });
     }
 
@@ -25,8 +25,8 @@ class AddImageInProducts extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('imageviewfile');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_role');
         });
     }
 }

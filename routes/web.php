@@ -52,6 +52,8 @@ Route::prefix('/{any?}/admin')->name('admin.')->group(function () {
         // Route::get('/product/edit/{id}', [App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('product.edit');
         // Route::get('/product/show/{id}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->name('product.show');
         // Route::delete('/product/destroy/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('product.destroy');
+    
+        Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
     });
 });
    

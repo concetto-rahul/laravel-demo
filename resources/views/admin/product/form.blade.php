@@ -30,9 +30,9 @@ $imageviewfile=isset($detail['imageviewfile'])?$detail['imageviewfile']:old('ima
                             <div class="card">
                                 <div class="card-body">
                                     @if(empty($detail))
-                                    <form method="post" action="{{route('admin.product.store',[app()->getLocale()])}}" id="theaterForm" enctype="multipart/form-data">
+                                    <form method="post" action="{{route('admin.product.store',[app()->getLocale()])}}" id="productForm" enctype="multipart/form-data">
                                     @else
-                                    <form method="post" action="{{route('admin.product.update',[app()->getLocale(),$id])}}" id="theaterFormEdit" enctype="multipart/form-data">
+                                    <form method="post" action="{{route('admin.product.update',[app()->getLocale(),$id])}}" id="productFormEdit" enctype="multipart/form-data">
                                         @method('PUT')
                                         @endif
                                         @csrf
@@ -85,4 +85,10 @@ $imageviewfile=isset($detail['imageviewfile'])?$detail['imageviewfile']:old('ima
       </div>
     @include('admin.common.footer')
 </div>
+@endsection
+
+@section('page_script')
+<script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\Product\StoreRequest', '#productForm') !!}
+{!! JsValidator::formRequest('App\Http\Requests\Product\UpdateProduct', '#productFormEdit') !!}
 @endsection
